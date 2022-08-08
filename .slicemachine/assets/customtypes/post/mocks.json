@@ -1,0 +1,40 @@
+{
+  "id": "mock-doc-id",
+  "url": null,
+  "type": "post",
+  "href": null,
+  "tags": [],
+  "first_publication_date": "1970-01-01T00:00:01+0000",
+  "last_publication_date": "1970-01-01T00:00:01+0000",
+  "slugs": [],
+  "linked_documents": [],
+  "lang": "en-us",
+  "alternate_languages": [],
+  "data": {
+    "title": "impossible",
+    "subtitle": "chief",
+    "author": "stand",
+    "banner": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": null,
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea"
+    },
+    "content": [
+      {
+        "heading": "room",
+        "body": [
+          {
+            "type": "paragraph",
+            "text": "Occaecat anim incididunt nostrud exercitation velit dolor. Enim mollit et culpa laboris sit enim.",
+            "spans": []
+          }
+        ]
+      }
+    ],
+    "slices": []
+  }
+}
