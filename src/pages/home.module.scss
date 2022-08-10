@@ -1,5 +1,77 @@
-.Container{
-    height: auto;
-    min-height: 100vh;
-    background-color: #282C34;
+.Container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+
+  height: auto;
+  min-height: 100vh;
+  padding-bottom: 30px;
+  background-color: #282c34;
+
+  h1,
+  h2,
+  p,
+  li {
+    font-family: inter;
+    color: white;
+  }
+
+  p {
+    margin-top: 64px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ff57b2;
+    cursor: pointer;
+  }
+
+  h1:hover {
+    color: rgba(255, 255, 255, 0.753);
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  ul {
+    display: flex;
+    margin-top: 10px;
+    text-align: left;
+  }
+
+  li {
+    font-size: 14px;
+    font-weight: 400;
+    list-style-type: none;
+  }
+
+  li:nth-child(2) {
+    padding: 0px 24px;
+  }
+
+  button {
+    margin-top: 64px;
+    font-size: 18;
+    color: #ff57b2;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    background-color: transparent;
+  }
+}
+
+.post {
+  margin-top: 48px;
+  cursor: pointer;
+}
+
+.image {
+  margin-top: 79.55px;
+  margin-bottom: 64.82px;
 }
