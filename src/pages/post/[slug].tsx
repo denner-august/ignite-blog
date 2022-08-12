@@ -1,3 +1,5 @@
+/* eslint-disable no-return-assign */
+/* eslint-disable no-param-reassign */
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
@@ -14,7 +16,6 @@ import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 
 import { getPrismicClient } from '../../services/prismic';
-import { RichText } from 'prismic-dom';
 
 interface Post {
   first_publication_date: string | null;
@@ -38,8 +39,6 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps): JSX.Element {
-  // deve ser calculado o tempo de leitura onde tem o texto 4 min
-
   const router = useRouter();
 
   const data = format(new Date(post.first_publication_date), 'dd MMM yyyy', {
@@ -47,26 +46,15 @@ export default function Post({ post }: PostProps): JSX.Element {
   });
 
   function CalcularText(): number {
-    const pattener = /\w+/;
+    const totalWords = post.data.content.reduce((preve, posts) => {
+      preve += posts.heading.split(' ').length;
 
-    const paragrafos = post.data.content.reduce((preve, posts) => {
-      preve.push(RichText.asText(posts.body));
-
-      return preve;
-    }, []);
-
-    const quantidadeLetras = paragrafos.reduce((preve, posts) => {
-      // eslint-disable-next-line no-param-reassign
-      preve += posts.length;
-
+      const words = posts.body.map(content => content.text.split(' ').length);
+      words.map(word => (preve += word));
       return preve;
     }, 0);
 
-    const tempoParaLer = Math.floor(quantidadeLetras / 200);
-
-    console.log(tempoParaLer);
-
-    return tempoParaLer;
+    return Math.ceil(totalWords / 200);
   }
 
   if (router.isFallback) {
@@ -122,10 +110,10 @@ export default function Post({ post }: PostProps): JSX.Element {
 
         {post.data.content.map(conteudo => {
           return (
-            <div key={conteudo.heading}>
+            <article key={conteudo.heading}>
               <h1>{conteudo.heading}</h1>
               <p>{conteudo.body.map(item => item.text)}</p>
-            </div>
+            </article>
           );
         })}
       </section>
