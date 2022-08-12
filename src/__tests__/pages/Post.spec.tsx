@@ -182,11 +182,7 @@ const mockedGetByUIDReturn = {
 
 jest.mock('@prismicio/client');
 jest.mock('../../services/prismic');
-jest.mock('next/router', () => ({
-  useRouter: jest.fn().mockReturnValue({
-    push: jest.fn(),
-  }),
-}));
+jest.mock('next/router');
 const mockedUseRouter = useRouter as jest.Mock;
 const mockedPrismic = getPrismicClient as jest.Mock;
 
