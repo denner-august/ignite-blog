@@ -11,7 +11,6 @@ import { FiUser, FiCalendar } from 'react-icons/fi';
 
 import { getPrismicClient } from '../services/prismic';
 
-import commonStyles from '../styles/common.module.scss';
 import styles from './home.module.scss';
 
 interface Post {
@@ -63,14 +62,14 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
   return (
     <main className={styles.Container}>
       <div>
-        <div className={styles.image}>
+        <header className={styles.image}>
           <Image
             src="/../public/images/Logo.svg"
             alt="logo"
             width={372}
             height={80}
           />
-        </div>
+        </header>
 
         {posts.results.map(post => {
           const data = format(

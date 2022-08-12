@@ -12,7 +12,6 @@ import ptBR from 'date-fns/locale/pt-BR';
 
 import { Loading } from '../../components/loading';
 
-import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 
 import { getPrismicClient } from '../../services/prismic';
@@ -135,7 +134,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: slug,
-    fallback: 'blocking', // can also be true or 'blocking' or false
+    fallback: true, // can also be true or 'blocking' or false
   };
 };
 
