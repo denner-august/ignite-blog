@@ -63,12 +63,7 @@ export default function Home({ postsPagination }: HomeProps): JSX.Element {
     <main className={styles.Container}>
       <div>
         <header className={styles.image}>
-          <Image
-            src="/../public/images/Logo.svg"
-            alt="logo"
-            width={372}
-            height={80}
-          />
+          <Image src="/images/Logo.svg" alt="logo" width={372} height={80} />
         </header>
 
         {posts.results.map(post => {

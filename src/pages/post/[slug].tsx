@@ -65,7 +65,7 @@ export default function Post({ post }: PostProps): JSX.Element {
       <Link href="/">
         <header>
           <Image
-            src="/../public/images/Logo.svg"
+            src="/images/Logo.svg"
             height={26.63}
             width={238.62}
             alt="logo"
