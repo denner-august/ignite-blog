@@ -1,8 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { GetStaticPropsContext } from 'next';
 import { ParsedUrlQuery } from 'querystring';
-
-// import { RouterContext } from 'next/dist/next-server/lib/router-context';
 import { RouterContext } from 'next/dist/shared/lib/router-context';
 
 import { getPrismicClient } from '../../services/prismic';
@@ -120,7 +118,6 @@ describe('Home', () => {
     expect(response.props.postsPagination.next_page).toEqual(
       postsPaginationReturn.next_page
     );
-
     expect(response.props.postsPagination.results).toEqual(
       expect.arrayContaining([
         expect.objectContaining(postsPaginationReturn.results[0]),

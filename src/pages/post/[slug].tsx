@@ -40,10 +40,6 @@ interface PostProps {
 export default function Post({ post }: PostProps): JSX.Element {
   const router = useRouter();
 
-  const data = format(new Date(post.first_publication_date), 'dd MMM yyyy', {
-    locale: ptBR,
-  });
-
   function CalcularText(): number {
     const totalWords = post.data.content.reduce((preve, posts) => {
       preve += posts.heading.split(' ').length;
@@ -56,7 +52,7 @@ export default function Post({ post }: PostProps): JSX.Element {
     return Math.ceil(totalWords / 200);
   }
 
-  if (router.isFallback) {
+  if (router.isFallback === true) {
     return <Loading />;
   }
 
@@ -89,7 +85,9 @@ export default function Post({ post }: PostProps): JSX.Element {
           <li>
             <>
               <FiCalendar style={{ marginRight: 10 }} />
-              {data}
+              {format(new Date(post.first_publication_date), 'dd MMM yyyy', {
+                locale: ptBR,
+              })}
             </>
           </li>
           <li>
@@ -134,17 +132,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: slug,
-    fallback: false, // can also be true or 'blocking' or false
+    fallback: true, // can also be true or 'blocking' or false
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient({});
   const response = await prismic.getByUID('post', `${params.slug}`);
-
-  const post = response;
-
   return {
-    props: { post },
+    props: { post: response },
   };
 };
